@@ -2,7 +2,6 @@
 // on your local machine.
 
 import browserSync from 'browser-sync';
-import historyApiFallback from 'connect-history-api-fallback';
 
 // Run Browsersync
 browserSync({
@@ -18,5 +17,5 @@ browserSync({
     'src/*.html'
   ],
 
-  middleware: [historyApiFallback()]
+  middleware: []
 });

@@ -8,13 +8,13 @@ body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   line-height: 1.4em;
   color: #4d4d4d;
-  min-width: 230px;
-  max-width: 550px;
+  min-width: 530px;
+  max-width: 980px;
   margin: 0 auto;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   font-smoothing: antialiased;
-  font-weight: 300;
+  // font-weight: 300;
 }
 
 td {
@@ -29,3 +29,145 @@ h2 {
 .loss { color: $vin-red; }
 input.small { width: 46px; }
 td.fuel-savings-label { width: 175px; }
+
+.content {
+    display: flex;
+}
+
+.add-task {
+    width: 50%;
+}
+
+.add-task__title {
+    font-size: 24px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.add-task-bbox {
+    margin-left: 16px;
+    margin-bottom: 22px;
+}
+
+.add-task-bbox__title {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.add-task-bbox__input {
+    margin-left: 16px;
+    margin-bottom: 8px;
+}
+
+.add-task-bbox__input-lat {
+    margin-right: 4px;
+}
+
+.add-task-layers {
+    margin-left: 16px;
+    margin-bottom: 22px;
+}
+
+.add-task-layers__title {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.add-task-layers__list {
+    margin-left: 16px;
+}
+
+.add-task-layer {
+    height: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.add-task-layer:hover {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.add-task-description {
+    margin-left: 16px;
+}
+
+.add-task-description__title {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.add-task-description__input {
+    margin-left: 16px;
+}
+
+.add-task-run {
+    margin-top: 36px;
+    display: block;
+    color: black;
+    font-size: 16px;
+    margin-left: 16px;
+}
+
+.task-list {
+    width: 50%;
+    margin-top: 24px;
+}
+
+.task {
+    border: 1px solid rgba(0,0,0,0.1);
+    margin-bottom: 8px;
+    padding: 8px;
+}
+
+.task_status_completed {
+    background: rgba(255,215,0,0.1);
+}
+
+.task_status_in-progress {
+    background: rgba(90,204,76,0.2);
+}
+
+.task__status {
+    font-weight: bold;
+}
+
+.task__description {
+    font-style: italic;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.task__filter-params {
+    display: inline-block;
+    color: #4d4d4d;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    line-height: 16px;
+}
+
+.task__result-link {
+    display: block;
+    margin-top: 14px;
+    font-size: 16px;
+    color: #E04040;
+}
+
+.task__date {
+    display: flex;
+}
+
+.task__date-label {
+    margin-right: 4px;
+}
+
+.task__controls {
+    margin-top: 8px;
+}
+
+.task__control {
+    color: #4d4d4d;
+    text-decoration: none;
+    border-bottom: 1px dashed;
+    line-height: 16px;
+    display: inline-block;
+}
