@@ -1,7 +1,8 @@
-import React, {PropTypes} from 'react';
-import {Component} from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import TASK_STATUSES from '../constants/TaskStatuses';
 import TaskDate from './TaskDate';
+import {cancelTask, deleteTask} from '../actions/actions';
 
 const TASK_STATUSES_DESC = {
     [TASK_STATUSES.waiting]: 'Ожидание',
@@ -15,7 +16,7 @@ const TASK_STATUSES_MOD = {
     [TASK_STATUSES.inProgress]: 'in-progress',
     [TASK_STATUSES.completed]: 'completed',
     [TASK_STATUSES.error]: 'error'
-}
+};
 
 const getElapsedTime = (startDate) => {
     return (Date.now() - startDate) / 1000;
@@ -27,8 +28,22 @@ const displayFilterParams = (filterParams) => {
 
 class Task extends Component {
 
+    constructor(props) {
+        super(props);
+        this.onCancelClick = this.onCancelClick.bind(this);
+        this.onDeleteClick = this.onDeleteClick.bind(this);
+    }
+
     componentDidMount() {
 
+    }
+
+    onCancelClick() {
+        this.props.dispatch(cancelTask(this.props.id));
+    }
+
+    onDeleteClick() {
+        this.props.dispatch(deleteTask(this.props.id));
     }
 
     render() {
@@ -63,15 +78,15 @@ class Task extends Component {
                 </a>
 
                 {(status ===  TASK_STATUSES.completed) ?
-                    <a className="task__result-link" href={resultLink}>
+                    <a className="task__result-link" target="_blank" href={resultLink}>
                         Результат
                     </a> : ''
                 }
 
                 <div className="task__controls">
                     {(status ===  TASK_STATUSES.completed) ?
-                        <a className="task__control" href="#"> Удалить </a> :
-                        <a className="task__control" href="#"> Отменить </a>
+                        <a className="task__control" onClick={this.onDeleteClick} href="#"> Удалить </a> :
+                        <a className="task__control" onClick={this.onCancelClick} href="#"> Отменить </a>
                     }
                 </div>
             </div>
@@ -81,7 +96,8 @@ class Task extends Component {
 }
 
 Task.propTypes = {
-    id: PropTypes.number.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    id: PropTypes.string.isRequired,
     status: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     startDate: PropTypes.number.isRequired,
@@ -90,4 +106,4 @@ Task.propTypes = {
     filterParams: PropTypes.string
 };
 
-export default Task;
+export default connect()(Task);

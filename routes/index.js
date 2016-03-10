@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-import {addTask, cancelTask, removeTask, getTaskList} from '../lib/task';
+import {addTask, cancelTask, deleteTask, getTaskList} from '../lib/task';
 
 const indexPage = require('fs').readFileSync('./src/index.html').toString();
 
@@ -16,15 +16,17 @@ router.get('/api/tasks', (req, res, next) => {
 
 router.post('/api/add_task', (req, res, next) => {
     addTask(req.body);
-    res.send(200);
+    res.sendStatus(200);
 });
 
-router.get('/api/remove_task', (req, res, next) => {
-    removeTask(req.query.id);
+router.get('/api/delete_task', (req, res, next) => {
+    deleteTask(req.query.id);
+    res.sendStatus(200);
 });
 
 router.get('/api/cancel_task', (req, res, next) => {
     cancelTask(req.query.id);
+    res.sendStatus(200);
 });
 
 module.exports = router;

@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import {UPDATE_TASK_LIST} from '../actions/actions';
+import {UPDATE_TASK_LIST, CANCEL_TASK, DELETE_TASK} from '../actions/actions';
 import {TOGGLE_LAYER} from '../constants/ActionTypes';
 
 const initialTaskListState = {
@@ -28,6 +28,16 @@ function taskList(state = initialTaskListState, action) {
             return Object.assign({}, state, {
                 tasks: action.tasks
             });
+        }
+
+        case CANCEL_TASK: {
+            fetch(`/api/cancel_task?id=${action.id}`);
+            return state;
+        }
+
+        case DELETE_TASK: {
+            fetch(`/api/delete_task?id=${action.id}`);
+            return state;
         }
 
         default:
