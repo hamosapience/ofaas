@@ -34,3 +34,9 @@ dist
 
 # Mac files
 .DS_Store
+
+osmconvert_*
+tmp
+result
+*.osm
+*.o5m

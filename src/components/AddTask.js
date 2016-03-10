@@ -5,16 +5,64 @@ import AddTaskDescription  from './AddTaskDescription';
 
 const LAYERS = [
     {
-        label: 'Надписи',
+        label: 'Подписи',
         type: 'name'
     },
     {
         label: 'Дороги',
-        type: 'roads'
+        type: 'highway'
     },
     {
         label: 'Озера',
         type: 'lakes'
+    },
+    {
+        label: 'Острова',
+        type: 'island'
+    },
+    {
+        label: 'Леса',
+        type: 'wood'
+    },
+    {
+        label: 'Населённые пункты',
+        type: 'city'
+    },
+    {
+        label: 'Строения',
+        type: 'building'
+    },
+    {
+        label: 'Реки',
+        type: 'river'
+    },
+    {
+        label: 'Моря и океаны',
+        type: 'coastline'
+    },
+    {
+        label: 'Газопроводы и Нефтепроводы',
+        type: 'pipeline'
+    },
+    {
+        label: 'Линии электропередач',
+        type: 'powerline'
+    },
+    {
+        label: 'Просеки',
+        type: 'cutline'
+    },
+    {
+        label: 'Мосты',
+        type: 'bridge'
+    },
+    {
+        label: 'Скалы',
+        type: 'cliff'
+    },
+    {
+        label: 'Болота',
+        type: 'wetland'
     }
 ];
 
@@ -27,10 +75,10 @@ const validateForm = ({
     // TODO: качественная валидация вводимого
 
     if (
-        isNaN(coord.topLeft.lat) ||
-        isNaN(coord.topLeft.lon) ||
-        isNaN(coord.bottomRight.lat) ||
-        isNaN(coord.bottomRight.lon) ||
+        isNaN(coord.bottomLeft.lat) ||
+        isNaN(coord.bottomLeft.lon) ||
+        isNaN(coord.topRight.lat) ||
+        isNaN(coord.topRight.lon) ||
         selectedLayers.length === 0,
         description === ''
     ) {
@@ -61,13 +109,13 @@ const onAddTaskClick = (e) => {
 
     const formContent = {
         coord: {
-            topLeft: {
-                lat: parseFloat($(".add-task-bbox__top-left .add-task-bbox__input-lat").value),
-                lon: parseFloat($(".add-task-bbox__top-left .add-task-bbox__input-lon").value)
+            bottomLeft: {
+                lat: parseFloat($(".add-task-bbox__bottom-left .add-task-bbox__input-lat").value),
+                lon: parseFloat($(".add-task-bbox__bottom-left .add-task-bbox__input-lon").value)
             },
-            bottomRight: {
-                lat: parseFloat($(".add-task-bbox__bottom-right .add-task-bbox__input-lat").value),
-                lon: parseFloat($(".add-task-bbox__bottom-right .add-task-bbox__input-lat").value)
+            topRight: {
+                lat: parseFloat($(".add-task-bbox__top-right .add-task-bbox__input-lat").value),
+                lon: parseFloat($(".add-task-bbox__top-right .add-task-bbox__input-lon").value)
             }
         },
         selectedLayers: Array.from($$(".add-task-layer__checkbox:checked")).map(getLayerType),
@@ -98,15 +146,15 @@ const AddTask = () => {
 
             <div className="add-task-bbox">
                 <div className="add-task-bbox__title">
-                    Ввод координат выборки
+                    Ввод прямоугольника выборки
                 </div>
-                <AddTaskBboxInput coord="top-left" label="Верхний левый угол"/>
-                <AddTaskBboxInput coord="bottom-right" label="Нижний правый угол"/>
+                <AddTaskBboxInput coord="bottom-left" label="Нижний левый угол (ЮЗ)"/>
+                <AddTaskBboxInput coord="top-right" label="Верхний правый угол (СВ)"/>
             </div>
 
             <div className="add-task-layers">
                 <div className="add-task-layers__title">
-                    Задание списка слоёв
+                    Выбор слоёв
                 </div>
                 <div className="add-task-layers__list">
                     {LAYERS.map((l, i) =>

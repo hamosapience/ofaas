@@ -66,13 +66,6 @@ class Task extends Component {
                     <TaskDate label="Дата завершения:" date={completedDate} /> : ''
                 }
 
-                {(status === TASK_STATUSES.inProgress) ?
-                    <div className="task__elapsed">
-                        Время выполнения:
-                        {getElapsedTime(startDate)}
-                    </div> : ''
-                }
-
                 <a className="task__filter-params" href="#" onClick={() => displayFilterParams(filterParams)}>
                     Параметры фильтрации
                 </a>

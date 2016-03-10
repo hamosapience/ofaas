@@ -8,11 +8,11 @@ const initialTaskListState = {
 
 const initialAddTaskState = {
     coord: {
-        topLeft: {
+        bottomLeft: {
             lat: null,
             lon: null
         },
-        bottomRight: {
+        topRight: {
             lat: null,
             lon: null
         }
