@@ -4,12 +4,14 @@ import TASK_STATUSES from '../constants/TaskStatuses';
 import TaskDate from './TaskDate';
 
 const TASK_STATUSES_DESC = {
-    [TASK_STATUSES.inProgress]: 'Активная задача',
+    [TASK_STATUSES.waiting]: 'Ожидание',
+    [TASK_STATUSES.inProgress]: 'Задача выполняется',
     [TASK_STATUSES.completed]: 'Задача завершена',
     [TASK_STATUSES.error]: 'Ошибка'
 };
 
 const TASK_STATUSES_MOD = {
+    [TASK_STATUSES.waiting]: 'waiting',
     [TASK_STATUSES.inProgress]: 'in-progress',
     [TASK_STATUSES.completed]: 'completed',
     [TASK_STATUSES.error]: 'error'
@@ -35,7 +37,7 @@ class Task extends Component {
         const taskClassName = `task task_status_${TASK_STATUSES_MOD[status]}`;
 
         return (
-            <div className={taskClassName}>
+            <div className={taskClassName} data-id={id}>
                 <div className="task__status">
                     {TASK_STATUSES_DESC[status]}
                 </div>
@@ -45,12 +47,15 @@ class Task extends Component {
 
                 <TaskDate label="Дата создания:" date={startDate} />
 
-                {(status ===  TASK_STATUSES.completed) ?
-                    <TaskDate label="Дата завершения:" date={completedDate} /> :
+                {(status === TASK_STATUSES.completed) ?
+                    <TaskDate label="Дата завершения:" date={completedDate} /> : ''
+                }
+
+                {(status === TASK_STATUSES.inProgress) ?
                     <div className="task__elapsed">
                         Время выполнения:
                         {getElapsedTime(startDate)}
-                    </div>
+                    </div> : ''
                 }
 
                 <a className="task__filter-params" href="#" onClick={() => displayFilterParams(filterParams)}>

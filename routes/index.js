@@ -16,6 +16,7 @@ router.get('/api/tasks', (req, res, next) => {
 
 router.post('/api/add_task', (req, res, next) => {
     addTask(req.body);
+    res.send(200);
 });
 
 router.get('/api/remove_task', (req, res, next) => {
