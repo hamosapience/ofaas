@@ -29,9 +29,10 @@ class TaskList extends Component {
 
             getTaskList()
             .then(response => response.json())
-            .then((tasks) => {
+            .then(tasks => {
                 dispatch(updateTaskList(tasks));
-            }).catch((ex) => {
+            })
+            .catch(ex => {
 
             });
 
@@ -50,5 +51,10 @@ class TaskList extends Component {
     }
 
 }
+
+TaskList.propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    tasks: PropTypes.arrayOf(PropTypes.any)
+};
 
 export default connect(mapStateToProps)(TaskList);

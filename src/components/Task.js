@@ -26,6 +26,10 @@ const displayFilterParams = (filterParams) => {
     alert(filterParams);
 };
 
+const displayError = (error) => {
+    alert(error);
+};
+
 class Task extends Component {
 
     constructor(props) {
@@ -48,7 +52,7 @@ class Task extends Component {
 
     render() {
 
-        const {id, status, description, startDate, completedDate, resultLink, filterParams} = this.props;
+        const {id, status, description, startDate, completedDate, resultLink, filterParams, error} = this.props;
         const taskClassName = `task task_status_${TASK_STATUSES_MOD[status]}`;
 
         return (
@@ -75,6 +79,13 @@ class Task extends Component {
                         Результат
                     </a> : ''
                 }
+                {(status === TASK_STATUSES.error) ?
+                    <div>
+                        <a className="task__error-details" href="#" onClick={() => displayError(error)}>
+                            Показать детали
+                        </a>
+                    </div>: ''
+                }
 
                 <div className="task__controls">
                     {(status ===  TASK_STATUSES.completed) ?
@@ -96,7 +107,8 @@ Task.propTypes = {
     startDate: PropTypes.number.isRequired,
     completedDate: PropTypes.number,
     resultLink: PropTypes.string,
-    filterParams: PropTypes.string
+    filterParams: PropTypes.string,
+    error: PropTypes.string
 };
 
 export default connect()(Task);

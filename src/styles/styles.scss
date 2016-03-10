@@ -145,6 +145,10 @@ td.fuel-savings-label { width: 175px; }
     background: rgba(255,215,0,0.1);
 }
 
+.task_status_error {
+    background: rgba(255, 121, 121, 0.36);
+}
+
 .task__status {
     font-weight: bold;
 }
@@ -156,6 +160,14 @@ td.fuel-savings-label { width: 175px; }
 }
 
 .task__filter-params {
+    display: inline-block;
+    color: #4d4d4d;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    line-height: 16px;
+}
+
+.task__error-details {
     display: inline-block;
     color: #4d4d4d;
     text-decoration: none;
