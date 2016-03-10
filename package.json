@@ -1,11 +1,11 @@
 {
-  "name": "react-slingshot",
+  "name": "ofaas",
   "version": "1.2.0",
-  "description": "Starter kit for creating apps with React and Redux",
+  "description": "OSM Filter as a Service",
   "scripts": {
     "prestart": "npm run remove-dist",
     "start": "parallelshell \"npm run lint:tools\" \"npm run test:watch\" \"npm run open:src\"",
-    "open:src": "babel-node tools/srcServer.js",
+    "open:src": "babel-node bin/www",
     "open:dist": "babel-node tools/distServer.js",
     "lint:tools": "eslint webpack.config.js tools",
     "clean-dist": "npm run remove-dist && mkdir dist",
@@ -19,11 +19,15 @@
   "author": "Cory House",
   "license": "MIT",
   "dependencies": {
+    "exports-loader": "0.6.3",
+    "imports-loader": "0.6.5",
+    "nedb": "1.8.0",
     "object-assign": "4.0.1",
     "react": "0.14.7",
     "react-dom": "0.14.7",
     "react-redux": "4.4.0",
-    "redux": "3.3.1"
+    "redux": "3.3.1",
+    "whatwg-fetch": "0.11.0"
   },
   "devDependencies": {
     "babel-cli": "6.5.1",
@@ -59,7 +63,14 @@
     "webpack": "1.12.11",
     "webpack-dev-middleware": "1.4.0",
     "webpack-hot-middleware": "2.6.0",
-    "yargs": "3.32.0"
+    "yargs": "3.32.0",
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "express": "~4.13.1",
+    "hbs": "~3.1.0",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0"
   },
   "keywords:": [
     "react",

@@ -17,33 +17,33 @@ const bundler = webpack(webpackConfig);
 browserSync({
     port: 8000,
     ui: {
-      port: 8001
+        port: 8001
     },
-  server: {
-    baseDir: 'src',
-    middleware: [
-      webpackDevMiddleware(bundler, {
-        // Dev middleware can't access config, so we provide publicPath
-        publicPath: webpackConfig.output.publicPath,
+    server: {
+        baseDir: 'src',
+        middleware: [
+            webpackDevMiddleware(bundler, {
+                // Dev middleware can't access config, so we provide publicPath
+                publicPath: webpackConfig.output.publicPath,
 
-        // pretty colored output
-        stats: { colors: true },
+                // pretty colored output
+                stats: { colors: true },
 
-        // Set to false to display a list of each file that is being bundled.
-        noInfo: false
+                // Set to false to display a list of each file that is being bundled.
+                noInfo: false
 
-        // for other settings see
-        // http://webpack.github.io/docs/webpack-dev-middleware.html
-      }),
+                // for other settings see
+                // http://webpack.github.io/docs/webpack-dev-middleware.html
+            }),
 
-      // bundler should be the same as above
-      webpackHotMiddleware(bundler)
+            // bundler should be the same as above
+            webpackHotMiddleware(bundler)
+        ]
+    },
+
+    // no need to watch '*.js' here, webpack will take care of it for us,
+    // including full page reloads if HMR won't work
+    files: [
+        'src/*.html'
     ]
-  },
-
-  // no need to watch '*.js' here, webpack will take care of it for us,
-  // including full page reloads if HMR won't work
-  files: [
-    'src/*.html'
-  ]
 });

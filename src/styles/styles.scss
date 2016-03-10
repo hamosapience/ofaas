@@ -74,17 +74,30 @@ td.fuel-savings-label { width: 175px; }
 }
 
 .add-task-layers__list {
-    margin-left: 16px;
+    margin-left: 12px;
+    margin-right: 32px;
 }
 
 .add-task-layer {
     height: 32px;
     display: flex;
     align-items: center;
+    padding-left: 4px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 .add-task-layer:hover {
     background-color: rgba(0,0,0,0.2);
+}
+
+.add-task-layer__label {
+    display: block;
+    flex-grow: 1;
+    height: 32px;
+    line-height: 32px;
+    cursor: pointer;
 }
 
 .add-task-description {
@@ -98,6 +111,9 @@ td.fuel-savings-label { width: 175px; }
 
 .add-task-description__input {
     margin-left: 16px;
+    width: 70%;
+    font-size: 14px;
+    border-color: rgba(0,0,0,0.2);
 }
 
 .add-task-run {

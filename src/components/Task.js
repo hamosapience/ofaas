@@ -48,6 +48,7 @@ class Task extends Component {
                 {(status ===  TASK_STATUSES.completed) ?
                     <TaskDate label="Дата завершения:" date={completedDate} /> :
                     <div className="task__elapsed">
+                        Время выполнения:
                         {getElapsedTime(startDate)}
                     </div>
                 }

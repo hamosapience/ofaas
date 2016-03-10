@@ -27,6 +27,7 @@ const initialState = {
 //and update values on the copy.
 export default function fuelSavingsAppState(state = initialState, action) {
 	switch (action.type) {
+
 		case SAVE_FUEL_SAVINGS:
       // For this example, just simulating a save by changing date modified.
       // In a real app using Redux, you might use redux-thunk and handle the async call in fuelSavingsActions.js

@@ -2,12 +2,24 @@ import React, {PropTypes} from 'react';
 
 const AddTaskLayer = ({label, type, isSelected}) => {
 
+    const onLayerClick = (e) => {
+    };
+
+    const checkboxId = `add-task-layer_${type}`;
+
     return (
         <div className="add-task-layer">
-            <input className="add-task-layer__checkbox" type="checkbox" checked={isSelected ? 'checked' : ''}></input>
-            <div className="add-task-layer__label">
+            <input
+                className="add-task-layer__checkbox"
+                type="checkbox"
+                onChange={onLayerClick}
+                id={checkboxId}
+                name={checkboxId}
+                data-type={type}
+                />
+            <label className="add-task-layer__label" htmlFor={checkboxId}>
                 {label}
-            </div>
+            </label>
         </div>
     );
 };

@@ -8,7 +8,7 @@ const AddTaskDescription = () => {
                 Краткое описание задачи
             </div>
 
-            <input className="add-task-description__input" />
+            <textarea className="add-task-description__input" />
         </div>
     );
 };
