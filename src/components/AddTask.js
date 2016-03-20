@@ -3,6 +3,7 @@ import AddTaskBboxInput from './AddTaskBboxInput';
 import AddTaskLayer from './AddTaskLayer';
 import AddTaskDescription  from './AddTaskDescription';
 
+// FIXME: брать список слоёв из одного места
 const LAYERS = [
     {
         label: 'Подписи',

@@ -28,7 +28,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use('/result', express.static(path.join(__dirname, 'result')));
+app.use('/result', express.static('/osmresult'));
 
 app.use(webpackDevMiddleware(bundler, {
     // Dev middleware can't access config, so we provide publicPath
